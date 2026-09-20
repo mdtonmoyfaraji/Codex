@@ -1,0 +1,11 @@
+{
+  "name": "markly-omr-scoring",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Dependency-free static OMR scoring interface",
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "check": "node --check src/main.js && node --check scripts/check-static.mjs",
+    "test": "node --test"
+  }
+}

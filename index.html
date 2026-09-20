@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#081c1c" />
+  <title>Markly — intelligent OMR scoring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <main>
+    <nav><a class="brand" href="#top"><span class="brand-mark">M</span>markly</a><div class="nav-status"><i></i> AI engine online</div><button class="text-button" id="demoBtn">View demo</button></nav>
+    <section class="hero" id="top"><div class="eyebrow">Flexible OMR, without templates</div><h1>Score every mark.<br><em>Trust every result.</em></h1><p>Upload an answer key and student sheets. Markly understands changing layouts, mixed scripts, and imperfect scans—then returns results in seconds.</p><div class="hero-actions"><a class="primary-button" href="#workspace">Start scanning <span>→</span></a><button class="play-button" id="howItWorks"><b>▶</b> How it works</button></div><div class="hero-stat"><strong>98.6%</strong><span>mark recognition confidence<br>on clean mobile scans</span></div><div class="orb orb-one"></div><div class="orb orb-two"></div></section>
+
+    <section class="workspace" id="workspace">
+      <div class="section-heading"><div><div class="eyebrow">Scoring workspace</div><h2>Drop scans. Get answers.</h2></div><div class="secure"><span>⌁</span> Files are processed privately</div></div>
+      <div class="steps"><span class="active">01 <b>Upload</b></span><span>02 <b>Analyze</b></span><span>03 <b>Results</b></span></div>
+      <div class="upload-grid">
+        <article class="drop-card key-card" id="keyDrop"><div class="card-label"><span class="number">01</span><span>Answer key</span><small>Required</small></div><div class="document-icon key-icon">✓</div><h3>Answer key scan</h3><p>Upload the marked master sheet.<br>Photos and PDFs supported.</p><label class="upload-action" for="keyInput">Choose file <span>↑</span></label><input id="keyInput" type="file" accept="image/*,.pdf,application/pdf" hidden><div class="file-chip" id="keyFile">No file selected</div></article>
+        <article class="drop-card student-card" id="studentDrop"><div class="card-label"><span class="number">02</span><span>Student sheets</span><small>1–200 files</small></div><div class="document-icon student-icon">▦</div><h3>OMR answer sheets</h3><p>Add a batch from a scanner, camera,<br>or your device.</p><label class="upload-action" for="studentInput">Add sheets <span>↑</span></label><input id="studentInput" type="file" accept="image/*,.pdf,application/pdf" multiple hidden><div class="file-chip" id="studentFile">No files selected</div></article>
+      </div>
+      <div class="scan-options"><div><b>Layout intelligence</b><span>Detect questions, option groups & reading order automatically</span></div><button class="toggle on" aria-label="toggle layout intelligence"><i></i></button><div class="divider"></div><div><b>Language detection</b><span>English + বাংলা option labels</span></div><span class="language-pill">Auto</span></div>
+      <button class="analyze-button" id="analyzeBtn" disabled>Analyze & score <span>→</span></button>
+      <p class="hint" id="hint">Add an answer key and at least one student sheet to continue.</p>
+    </section>
+
+    <section class="results hidden" id="results"><div class="result-top"><div><div class="eyebrow">Analysis complete</div><h2>Your results are ready.</h2><p id="analysisMeta">Dynamic layout mapped with high confidence.</p></div><button class="export-button" id="exportBtn">↓ Export CSV</button></div><div class="score-grid"><article><span>Students scanned</span><strong id="studentsCount">1</strong><small>all sheets processed</small></article><article><span>Average score</span><strong id="averageScore">—</strong><small>of <b id="totalMarks">—</b> marks</small></article><article><span>Average accuracy</span><strong id="accuracy">—</strong><small>across all responses</small></article><article><span>Review needed</span><strong id="reviewCount">0</strong><small>low-confidence marks</small></article></div><div class="results-panel"><div class="panel-head"><div><h3>Student results</h3><p>Review answers and export your scored batch.</p></div><span class="confidence">● <b id="confidenceValue">98.6%</b> extraction confidence</span></div><div class="table-wrap"><table><thead><tr><th>Student sheet</th><th>Correct</th><th>Wrong</th><th>Blank</th><th>Multiple</th><th>Score</th><th></th></tr></thead><tbody id="resultRows"></tbody></table></div></div><div class="answer-strip"><div><span>Detected answer pattern</span><strong id="patternText">A · B · C · D</strong></div><div class="question-dots" id="questionDots"></div><button id="restartBtn">Scan another batch →</button></div></section>
+    <section class="trust"><div><span class="eyebrow">Built for real paper</span><h2>Not a fixed-template checker.</h2></div><p>Our hybrid vision pipeline finds bubbles and question groups first, then uses OCR to read labels and validate the structure. It adapts to new forms while keeping the scoring fast and explainable.</p><div class="trust-list"><span>◉ Perspective correction</span><span>◉ Bubble confidence checks</span><span>◉ Multilingual OCR</span></div></section>
+  </main>
+  <div class="modal hidden" id="modal"><div class="modal-box"><button class="close" id="closeModal">×</button><div class="scanner"><div></div><i></i></div><h2>From scan to score</h2><p>Markly first corrects the image, detects answer groups, recognizes option labels in English or Bengali, and scores each response against the extracted answer key.</p></div></div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
